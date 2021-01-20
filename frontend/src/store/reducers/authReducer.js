@@ -1,7 +1,7 @@
 import actiontypes from '../actiontypes';
 
 const initState = {
-  isAuthenticated = false
+  isAuthenticated: false
 }
 
 const authReducer = (state = initState, action) => {
