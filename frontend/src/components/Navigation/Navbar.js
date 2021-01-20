@@ -24,25 +24,24 @@ const Navbar = () => {
         <div className="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink className="nav-link" exact to="/">Home</NavLink>
-            <NavLink className="nav-link" exact to="/books">Library</NavLink>
+            <NavLink className="nav-link" exact to="/books">Books</NavLink>
             <NavLink className="nav-link" exact to="/categories">Categories</NavLink>
           </div>
-          {/* <ul class="navbar-nav"> */}
-          <div class="navbar-nav dropdown">
+          <div className="navbar-nav dropdown">
             <a
-              href="!#"
-              class="nav-link dropdown-toggle"
-              // id="navbarDropdownMenuLink"
+              href="#"
+              className="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink"
               role="button"
               data-mdb-toggle="dropdown"
               aria-expanded="false"
-            > <i class="fas fa-user me-2"></i>
+            > <i className="fas fa-user me-2"></i>
                 Admin
             </a>
-            <div class="dropdown-menu">
+            <div className="dropdown-menu">
               {
-                isAuth ? <NavLink class="dropdown-item m-0" exact to="/signin">Sign in</NavLink>
-                  : <p class="dropdown-item m-0">Sign out</p>
+                isAuth ? <NavLink className="dropdown-item m-0" exact to="/signin">Sign in</NavLink>
+                  : <p className="dropdown-item m-0">Sign out</p>
               }
             </div>
           </div>
