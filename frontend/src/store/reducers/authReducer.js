@@ -4,7 +4,7 @@ const initState = {
   isAuthenticated = false
 }
 
-const authReducer = () => {
+const authReducer = (state = initState, action) => {
 
 
 }
