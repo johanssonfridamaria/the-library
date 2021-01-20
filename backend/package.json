@@ -1,0 +1,19 @@
+{
+  "name": "the-library-api",
+  "version": "1.0.0",
+  "description": "API for library manager site",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanssonfridamaria/the-library.git"
+  },
+  "author": "Frida Johansson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johanssonfridamaria/the-library/issues"
+  },
+  "homepage": "https://github.com/johanssonfridamaria/the-library#readme"
+}
