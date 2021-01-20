@@ -1,7 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+
+  const isAuth = useSelector(state => state.auth.isAuthenticated);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -35,8 +39,10 @@ const Navbar = () => {
                 Admin
             </a>
             <div class="dropdown-menu">
-              <NavLink class="dropdown-item m-0" exact to="/signin">Sign in</NavLink>
-              <p class="dropdown-item m-0">Sign out</p>
+              {
+                isAuth ? <NavLink class="dropdown-item m-0" exact to="/signin">Sign in</NavLink>
+                  : <p class="dropdown-item m-0">Sign out</p>
+              }
             </div>
           </div>
         </div>
