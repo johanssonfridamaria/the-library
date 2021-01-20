@@ -30,6 +30,7 @@ const Navbar = () => {
           {/* <ul class="navbar-nav"> */}
           <div class="navbar-nav dropdown">
             <a
+              href="!#"
               class="nav-link dropdown-toggle"
               // id="navbarDropdownMenuLink"
               role="button"
