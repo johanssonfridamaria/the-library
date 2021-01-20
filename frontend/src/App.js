@@ -12,8 +12,9 @@ function App() {
 
 
     <Switch >
-      <Route exact path="/" component={}/>
+      <Route exact path="/" component={landing}/>
       <Route exact path="/signin" component={SignIn}/>
+      <ProtectedRoute exact path="/manage" component={SignIn}/>
     </Switch>
 
     <Footer />
