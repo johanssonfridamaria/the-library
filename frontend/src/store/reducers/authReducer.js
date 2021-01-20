@@ -5,7 +5,18 @@ const initState = {
 }
 
 const authReducer = (state = initState, action) => {
+ switch(action.type){
+   case actiontypes().auth.signin:
+     state.isAuthenticated = action.payload
+     return state
 
+   case actiontypes().auth.signout:
+     state.isAuthenticated = action.payload
+     return state
+
+     default:
+       return state
+ }
 
 }
 
