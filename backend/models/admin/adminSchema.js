@@ -1,4 +1,4 @@
-const mongo = require('mongoose');
+const mongodb = require('mongoose');
 
 const adminSchema = mongodb.Schema({
 
@@ -10,3 +10,5 @@ const adminSchema = mongodb.Schema({
   created: {type: Date, default: Date.now()},
   modified: {type: Date, default: Date.now()},
 });
+
+module.exports = mongodb.model('Admin', adminSchema);
