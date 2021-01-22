@@ -1,12 +1,11 @@
 const actiontypes = () => {
-return{
-  auth: {
-    login: 'LOGIN',
-    logout: 'LOGOUT'
-  },
-}
-
-
+  return {
+    auth: {
+      loginFailed: 'LOGIN_FAILED',
+      loginSuccess: 'LOGIN_SUCCESS',
+      logout: 'LOGOUT'
+    },
+  }
 }
 
 export default actiontypes;
