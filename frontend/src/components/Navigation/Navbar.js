@@ -40,7 +40,7 @@ const Navbar = () => {
             </a>
             <div className="dropdown-menu">
               {
-                isAuth ? <NavLink className="dropdown-item m-0" exact to="/signin">Sign in</NavLink>
+                isAuth ? <NavLink className="dropdown-item m-0" exact to="/login">Sign in</NavLink>
                   : <p className="dropdown-item m-0">Sign out</p>
               }
             </div>
