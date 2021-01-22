@@ -1,8 +1,8 @@
 const actiontypes = () => {
 return{
   auth: {
-    signin: 'SIGNIN',
-    signout: 'SIGNOUT'
+    login: 'LOGIN',
+    logout: 'LOGOUT'
   },
 }
 
