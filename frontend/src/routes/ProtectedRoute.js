@@ -11,7 +11,7 @@ const isAuth = useSelector(state => state.auth.isAuthenticated)
       if (isAuth) {
         return <Component {...props} />
       } else {
-        return <Redirect to={{ pathname: '/signin', state: { from: props.location } }} />
+        return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
       }
     }} />
   )
