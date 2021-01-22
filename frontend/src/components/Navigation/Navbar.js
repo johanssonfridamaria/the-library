@@ -1,10 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+// import  { useHistory } from 'react-router-dom';
+import { logout } from '../../store/actions/authenticate'
 
 const Navbar = () => {
 
   const isAuth = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch()
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,8 +43,8 @@ const Navbar = () => {
             </a>
             <div className="dropdown-menu">
               {
-                isAuth ? <NavLink className="dropdown-item m-0" exact to="/login">Sign in</NavLink>
-                  : <p className="dropdown-item m-0">Sign out</p>
+                isAuth ? <p className="dropdown-item m-0" onClick={() => dispatch(logout())}>Sign out</p>
+                  : <NavLink className="dropdown-item m-0" exact to="/login">Sign in</NavLink>
               }
             </div>
           </div>
