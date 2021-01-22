@@ -52,8 +52,8 @@ exports.registerAdmin = (req, res) => {
 
 exports.loginAdmin = (req, res) => {
   Admin.findOne({ email: req.body.email })
-    .then(user => {
-      if (user === null) {
+    .then(admin => {
+      if (admin === null) {
         return res.status(404).json({
           statusCode: 404,
           status: false,
@@ -62,7 +62,7 @@ exports.loginAdmin = (req, res) => {
       }
 
       try {
-        bcrypt.compare(req.body.password, admin.passwordHash, (err, result) => {
+        bcrypt.compare(req.body.password, admin.passwordHash, ( result) => {
           if (result) {
             return res.status(200).json({
               statusCode: 200,
@@ -82,7 +82,7 @@ exports.loginAdmin = (req, res) => {
         return res.status(500).json({
           statusCode: 500,
           status: false,
-          message: 'Unable to authenticate user. Please contact the System Administrator'
+          message: 'Unable to authenticate admin. Please contact the System Administrator'
         })
       }
     })
