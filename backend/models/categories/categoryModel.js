@@ -26,8 +26,7 @@ exports.getOneCategory = (req, res) => {
     }));
 };
 
-//create a new category
-exports.createCategory = (req, res) => {
+exports.checkCategoryName = (req, res, next) => {
   Category.find({ name: { $regex: new RegExp(req.body.name, "i") } })
     .then(exists => {
       if (exists.length > 0) {
@@ -37,69 +36,61 @@ exports.createCategory = (req, res) => {
           message: 'A category by that name already exists!'
         });
       };
+      next();
+    });
+};
 
-      const category = new Category({
-        _id: new mongodb.Types.ObjectId,
-        name: req.body.name,
+//create a new category
+exports.createCategory = (req, res) => {
+  const category = new Category({
+    _id: new mongodb.Types.ObjectId,
+    name: req.body.name,
+  });
+
+  category.save()
+    .then(category => {
+      res.status(201).json({
+        statusCode: 201,
+        status: true,
+        message: 'Category created',
+        data: {
+          category
+        }
       });
-
-      category.save()
-        .then(category => {
-          res.status(201).json({
-            statusCode: 201,
-            status: true,
-            message: 'Category created',
-            data: {
-              category
-            }
-          });
-        })
-        .catch(() => {
-          res.status(500).json({
-            statusCode: 500,
-            status: false,
-            message: 'Failed to create category'
-          });
-        });
+    })
+    .catch(() => {
+      res.status(500).json({
+        statusCode: 500,
+        status: false,
+        message: 'Failed to create category'
+      });
     });
 };
 
 //update a specifik category
 exports.updateCategory = (req, res) => {
-  Category.find({ name: { $regex: new RegExp(req.body.name, "i") } })
-    .then(exists => {
-      if (exists.length > 0) {
-        return res.status(400).json({
-          statusCode: 400,
-          status: false,
-          message: 'A category by that name already exists!'
-        });
-      }
-      else {
-        Category.updateOne({ _id: req.params.id }, req.body)
-          .then(category => {
-            Category.updateOne({ _id: req.params.id }, { $set: { modified: Date.now() } })
-              .then(() => {
-                res.status(200).json({
-                  statusCode: 200,
-                  status: true,
-                  message: 'Category updated',
-                  data: {
-                    category
-                  }
-                })
-              })
-              .catch(() => {
-                res.status(500).json({
-                  statusCode: 500,
-                  status: false,
-                  message: 'Failed to update category'
-                })
-              })
+  Category.updateOne({ _id: req.params.id }, req.body)
+    .then(category => {
+      Category.updateOne({ _id: req.params.id }, { $set: { modified: Date.now() } })
+        .then(() => {
+          res.status(200).json({
+            statusCode: 200,
+            status: true,
+            message: 'Category updated',
+            data: {
+              category
+            }
           })
-      }
+        })
+        .catch(() => {
+          res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Failed to update category'
+          })
+        })
     })
-}
+};
 
 //delete category
 exports.deleteCategory = (req, res) => {
@@ -113,21 +104,21 @@ exports.deleteCategory = (req, res) => {
   //       });
   //     }
   //     else {
-        Category.deleteOne({ _id: req.params.id })
-          .then(() => {
-            res.status(200).json({
-              statusCode: 200,
-              status: true,
-              message: 'Category deleted!'
-            })
-          })
-          .catch(() => {
-            res.status(500).json({
-              statusCode: 500,
-              status: false,
-              message: 'Failed to delete category'
-            })
-          })
-      }
+  Category.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.status(200).json({
+        statusCode: 200,
+        status: true,
+        message: 'Category deleted!'
+      })
+    })
+    .catch(() => {
+      res.status(500).json({
+        statusCode: 500,
+        status: false,
+        message: 'Failed to delete category'
+      })
+    })
+};
     // })
 // }
