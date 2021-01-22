@@ -7,11 +7,11 @@ router.get('/', categoryModel.getCategories);
 //get one category
 router.get('/:id', categoryModel.getOneCategory);
 //create a new category
-router.post('/new' ,categoryModel.checkCategoryName, categoryModel.createCategory);
+router.post('/new', auth.verifyToken ,categoryModel.checkCategoryName, categoryModel.createCategory);
 //update specific category
-router.patch('/:id', categoryModel.checkCategoryName, categoryModel.updateCategory);
+router.patch('/:id', auth.verifyToken ,categoryModel.checkCategoryName, categoryModel.updateCategory);
 //delete specific category
-router.delete('/:id', categoryModel.deleteCategory);
+router.delete('/:id', auth.verifyToken, categoryModel.deleteCategory);
 
 
 module.exports = router;
