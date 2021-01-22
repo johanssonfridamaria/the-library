@@ -62,7 +62,7 @@ exports.loginAdmin = (req, res) => {
       }
 
       try {
-        bcrypt.compare(req.body.password, admin.passwordHash, ( result) => {
+        bcrypt.compare(req.body.passwordHash, admin.passwordHash, ( result) => {
           if (result) {
             return res.status(200).json({
               statusCode: 200,
