@@ -11,8 +11,6 @@ router.post('/new', categoryModel.checkCategoryName, categoryModel.createCategor
 router.patch('/:id', categoryModel.checkCategoryName, categoryModel.updateCategory);
 //delete specific category
 router.delete('/:id', categoryModel.deleteCategory);
-// get libraryItems with specifik CategoryID
-router.get('/:id/libraryItems', LibraryItemModel.getLibraryItemsByCatId);
 
 
 module.exports = router;
