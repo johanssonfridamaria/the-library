@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ProtectedRoute } from './routes/ProtectedRoute'
 import Navbar from './components/Navigation/Navbar';
 import Footer from './components/Navigation/Footer';
-import SignIn from './views/Admin/SignIn';
+import Login from './views/Admin/Login';
 import Books from './views/Books';
 import Categories from './views/Categories';
 import LandingPage from './views/LandingPage';
@@ -18,7 +18,7 @@ function App() {
 
       <Switch >
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/books" component={Books} />
         <Route exact path="/categories" component={Categories} />
         <ProtectedRoute exact path="/manage" component={Mangage} />
