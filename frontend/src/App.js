@@ -15,14 +15,15 @@ function App() {
     <BrowserRouter >
       <Navbar />
 
-
-      <Switch >
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/books" component={Books} />
-        <Route exact path="/categories" component={Categories} />
-        <ProtectedRoute exact path="/manage" component={Mangage} />
-      </Switch>
+      <div className="container">
+        <Switch >
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/books" component={Books} />
+          <Route exact path="/categories" component={Categories} />
+          <ProtectedRoute exact path="/manage" component={Mangage} />
+        </Switch>
+      </div>
 
       <Footer />
     </BrowserRouter>
